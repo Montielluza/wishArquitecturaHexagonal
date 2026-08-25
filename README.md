@@ -181,3 +181,6 @@ Este `@RestControllerAdvice` **no pertenece a este módulo** — lo crea el inte
 | 4 | `feature/usecases` | `feat(application): implement business use cases` |
 | 5 | `feature/domain-finalization` | `docs(core): finalize hexagonal architecture and bean configuration` |
 
+## Estado del proyecto
+
+El proyecto se encuentra en desarrollo y las funcionalidades se integran progresivamente mediante pull requests sobre la rama `develop`.
