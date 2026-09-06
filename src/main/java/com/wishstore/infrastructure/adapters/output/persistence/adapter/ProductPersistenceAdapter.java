@@ -4,7 +4,7 @@ import com.wishstore.domain.model.Product;
 import com.wishstore.domain.ports.ProductRepositoryPort;
 import com.wishstore.infrastructure.adapters.output.persistence.entity.ProductEntity;
 import com.wishstore.infrastructure.adapters.output.persistence.mapper.ProductPersistenceMapper;
-import com.wishstore.infrastructure.adapters.output.persistence.repository.ProductJpaRepository;
+import com.wishstore.infrastructure.adapters.output.persistence.repository.JpaProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ProductPersistenceAdapter implements ProductRepositoryPort {
 
-    private final ProductJpaRepository repository;
+    private final JpaProductRepository repository;
     private final ProductPersistenceMapper mapper;
 
     @Override

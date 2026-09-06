@@ -4,7 +4,7 @@ import com.wishstore.domain.model.WishlistHistory;
 import com.wishstore.domain.ports.HistoryRepositoryPort;
 import com.wishstore.infrastructure.adapters.output.persistence.entity.WishlistHistoryEntity;
 import com.wishstore.infrastructure.adapters.output.persistence.mapper.WishlistHistoryPersistenceMapper;
-import com.wishstore.infrastructure.adapters.output.persistence.repository.WishlistHistoryJpaRepository;
+import com.wishstore.infrastructure.adapters.output.persistence.repository.JpaWishlistHistoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WishlistHistoryPersistenceAdapter implements HistoryRepositoryPort {
 
-    private final WishlistHistoryJpaRepository repository;
+    private final JpaWishlistHistoryRepository repository;
     private final WishlistHistoryPersistenceMapper mapper;
 
     @Override

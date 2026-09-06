@@ -4,7 +4,7 @@ import com.wishstore.domain.model.Wishlist;
 import com.wishstore.domain.ports.WishlistRepositoryPort;
 import com.wishstore.infrastructure.adapters.output.persistence.entity.WishlistEntity;
 import com.wishstore.infrastructure.adapters.output.persistence.mapper.WishlistPersistenceMapper;
-import com.wishstore.infrastructure.adapters.output.persistence.repository.WishlistJpaRepository;
+import com.wishstore.infrastructure.adapters.output.persistence.repository.JpaWishlistRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class WishlistPersistenceAdapter implements WishlistRepositoryPort {
 
-    private final WishlistJpaRepository repository;
+    private final JpaWishlistRepository repository;
     private final WishlistPersistenceMapper mapper;
 
     @Override
