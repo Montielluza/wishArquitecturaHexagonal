@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="container mt-4">
+  @if (successMessage) {
+    <div class="alert alert-success">{{ successMessage }}</div>
+  }
+  @if (errorMessage) {
+    <div class="alert alert-danger">{{ errorMessage }}</div>
+  }
+
+  <div class="mb-3">
+    <label for="productId" class="form-label">ID del Producto</label>
+    <input id="productId" type="number" class="form-control" formControlName="productId">
+    @if (form.get('productId')?.invalid && form.get('productId')?.touched) {
+      <div class="text-danger">El producto es obligatorio.</div>
+    }
+  </div>
+
+  <div class="mb-3">
+    <label for="quantity" class="form-label">Cantidad</label>
+    <input id="quantity" type="number" class="form-control" formControlName="quantity">
+    @if (form.get('quantity')?.invalid && form.get('quantity')?.touched) {
+      <div class="text-danger">La cantidad debe estar entre 1 y 100.</div>
+    }
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Guardar</button>
+</form>

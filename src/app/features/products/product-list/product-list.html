@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Catálogo de Productos</h2>
+
+  @if (loading) {
+    <app-spinner></app-spinner>
+  }
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">{{ errorMessage }}</div>
+  }
+
+  @if (!loading && !errorMessage && products.length === 0) {
+    <p>No hay productos disponibles por el momento.</p>
+  }
+
+  @if (!loading && !errorMessage && products.length > 0) {
+    <div class="row g-3">
+      @for (product of products; track product.id) {
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <app-product-card
+            [product]="product"
+            (addToWishlist)="onAddToWishlist($event)">
+          </app-product-card>
+        </div>
+      }
+    </div>
+  }
+</div>

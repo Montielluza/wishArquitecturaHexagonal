@@ -1,0 +1,16 @@
+<div class="card h-100">
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text text-muted">{{ product.description }}</p>
+    <div class="mt-auto">
+      <p class="fw-bold mb-1">{{ product.price | currencyFormat }}</p>
+      <p class="small mb-2">Stock: {{ product.stock }}</p>
+      <button
+        class="btn btn-primary w-100"
+        [disabled]="product.stock === 0"
+        (click)="onAddClick()">
+        Agregar a Wishlist
+      </button>
+    </div>
+  </div>
+</div>

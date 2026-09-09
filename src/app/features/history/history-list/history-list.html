@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Historial</h2>
+
+  @if (loading) {
+    <p>Cargando historial...</p>
+  }
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">{{ errorMessage }}</div>
+  }
+
+  @if (!loading && history.length === 0 && !errorMessage) {
+    <p>No hay movimientos en el historial.</p>
+  }
+
+  @if (!loading && history.length > 0) {
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Acción</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (record of history; track record.id) {
+          <tr>
+            <td>{{ record.description }}</td>
+            <td>{{ record.action }}</td>
+            <td>{{ record.createdAt }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</div>
