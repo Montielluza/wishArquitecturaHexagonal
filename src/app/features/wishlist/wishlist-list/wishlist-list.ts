@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { Wishlist } from '../../../shared/models/wishlist.model';
 import { WishlistService } from '../../../core/services/wishlist.service';
 import { Modal } from '../../../shared/components/modal/modal';
 
 @Component({
   selector: 'app-wishlist-list',
-  imports: [CommonModule, Modal],
+  imports: [CommonModule, Modal, RouterLink],
   templateUrl: './wishlist-list.html',
   styleUrl: './wishlist-list.scss',
 })
