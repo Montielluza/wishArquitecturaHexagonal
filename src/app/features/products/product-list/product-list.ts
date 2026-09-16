@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Product } from '../../../shared/models/product.model';
 import { ProductService } from '../../../core/services/product.service';
 import { WishlistService } from '../../../core/services/wishlist.service';
@@ -8,7 +10,7 @@ import { Spinner } from '../../../shared/components/spinner/spinner';
 
 @Component({
   selector: 'app-product-list',
-  imports: [CommonModule, ProductCard, Spinner],
+  imports: [CommonModule, FormsModule, ProductCard, Spinner],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
@@ -17,10 +19,12 @@ export class ProductList implements OnInit {
   loading = true;
   errorMessage = '';
   successMessage = '';
+  searchId: number | null = null;
 
   constructor(
     private productService: ProductService,
-    private wishlistService: WishlistService
+    private wishlistService: WishlistService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -53,5 +57,11 @@ export class ProductList implements OnInit {
         this.errorMessage = err?.error?.message ?? 'No fue posible agregar el producto a la wishlist.';
       }
     });
+  }
+
+  goToProduct(): void {
+    if (this.searchId) {
+      this.router.navigate(['/products', this.searchId]);
+    }
   }
 }

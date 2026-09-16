@@ -1,6 +1,15 @@
 <div class="container mt-4">
   <h2 class="mb-4">Catálogo de Productos</h2>
 
+<div class="input-group mb-4" style="max-width: 300px;">
+  <input
+    type="number"
+    class="form-control"
+    placeholder="Buscar por ID"
+    [(ngModel)]="searchId">
+  <button class="btn btn-outline-primary" (click)="goToProduct()">Buscar</button>
+</div>
+
   @if (loading) {
     <app-spinner></app-spinner>
   }
