@@ -7,14 +7,21 @@
     <div class="alert alert-danger">{{ errorMessage }}</div>
   }
 
+  @if (successMessage) {
+    <div class="alert alert-success">{{ successMessage }}</div>
+  }
+
   @if (product) {
     <a routerLink="/products" class="btn btn-secondary mb-3">← Volver</a>
     <h2>{{ product.name }}</h2>
     <p class="text-muted">{{ product.description }}</p>
-    <p class="fw-bold fs-4">${{ product.price }}</p>
+    <p class="fw-bold fs-4">{{ product.price | currencyFormat }}</p>
     <p>Stock: {{ product.stock }}</p>
     @if (product.outOfStock) {
-      <span class="badge bg-danger">Agotado</span>
+      <span class="badge bg-danger mb-3 d-inline-block">Agotado</span><br>
     }
+    <button class="btn btn-primary" [disabled]="product.outOfStock" (click)="onAddToWishlist()">
+      Agregar a Wishlist
+    </button>
   }
 </div>
