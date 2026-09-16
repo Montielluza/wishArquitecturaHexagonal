@@ -7,8 +7,15 @@
   }
 
   <div class="mb-3">
-    <label for="productId" class="form-label">ID del Producto</label>
-    <input id="productId" type="number" class="form-control" formControlName="productId">
+    <label for="productId" class="form-label">Producto</label>
+    <select id="productId" class="form-select" formControlName="productId">
+      <option value="" disabled>Selecciona un producto</option>
+      @for (product of products; track product.id) {
+        <option [value]="product.id" [disabled]="product.stock === 0">
+          {{ product.name }}{{ product.stock === 0 ? ' (agotado)' : '' }}
+        </option>
+      }
+    </select>
     @if (form.get('productId')?.invalid && form.get('productId')?.touched) {
       <div class="text-danger">El producto es obligatorio.</div>
     }
