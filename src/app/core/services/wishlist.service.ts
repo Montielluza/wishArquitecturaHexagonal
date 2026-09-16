@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Wishlist, WishlistRequest } from '../../shared/models/wishlist.model';
 import { ApiResponse } from '../../shared/models/api-response.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WishlistService {
-  private apiUrl = 'https://wisharquitecturahexagonal-production.up.railway.app/wishlist';
+  private apiUrl = `${environment.apiUrl}/wishlist`;
 
   constructor(private http: HttpClient) {}
 

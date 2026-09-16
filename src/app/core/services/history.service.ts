@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { History } from '../../shared/models/history.model';
 import { ApiResponse } from '../../shared/models/api-response.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HistoryService {
-  private apiUrl = 'https://wisharquitecturahexagonal-production.up.railway.app/history';
+  private apiUrl = `${environment.apiUrl}/history`;
 
   constructor(private http: HttpClient) {}
 

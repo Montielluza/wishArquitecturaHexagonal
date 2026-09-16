@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Product } from '../../shared/models/product.model';
 import { ApiResponse } from '../../shared/models/api-response.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'https://wisharquitecturahexagonal-production.up.railway.app/products';
+  private apiUrl = `${environment.apiUrl}/products`;
 
   constructor(private http: HttpClient) {}
 
