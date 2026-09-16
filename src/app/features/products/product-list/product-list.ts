@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../../shared/models/product.model';
 import { ProductService } from '../../../core/services/product.service';
+import { WishlistService } from '../../../core/services/wishlist.service';
 import { ProductCard } from '../product-card/product-card';
 import { Spinner } from '../../../shared/components/spinner/spinner';
 
@@ -15,8 +16,12 @@ export class ProductList implements OnInit {
   products: Product[] = [];
   loading = true;
   errorMessage = '';
+  successMessage = '';
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private wishlistService: WishlistService
+  ) {}
 
   ngOnInit(): void {
     this.loadProducts();
@@ -38,6 +43,15 @@ export class ProductList implements OnInit {
   }
 
   onAddToWishlist(product: Product): void {
-    console.log('Agregar a wishlist:', product);
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.wishlistService.createWishlist({ productId: product.id, quantity: 1 }).subscribe({
+      next: () => {
+        this.successMessage = `"${product.name}" se agregó a tu wishlist.`;
+      },
+      error: (err) => {
+        this.errorMessage = err?.error?.message ?? 'No fue posible agregar el producto a la wishlist.';
+      }
+    });
   }
 }

@@ -9,6 +9,10 @@
     <div class="alert alert-danger">{{ errorMessage }}</div>
   }
 
+  @if (successMessage) {
+    <div class="alert alert-success">{{ successMessage }}</div>
+  }
+
   @if (!loading && !errorMessage && products.length === 0) {
     <p>No hay productos disponibles por el momento.</p>
   }
