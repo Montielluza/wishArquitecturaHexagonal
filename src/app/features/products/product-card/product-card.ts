@@ -22,10 +22,7 @@ export class ProductCard {
   };
 
   get imageUrl(): string {
-    if (this.product.image) {
-      return this.product.image;
-    }
-    const name = this.product.name.toLowerCase();
+  const name = this.product.name.toLowerCase();
     for (const key in this.fallbackImages) {
       if (name.includes(key)) {
         return this.fallbackImages[key];
