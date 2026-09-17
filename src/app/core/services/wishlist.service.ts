@@ -32,4 +32,4 @@ export class WishlistService {
     return this.http.delete<ApiResponse<void>>(`${this.apiUrl}/${id}`)
       .pipe(map(() => undefined));
   }
-}
+} 

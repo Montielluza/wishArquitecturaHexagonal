@@ -12,6 +12,28 @@ export class ProductCard {
   @Input({ required: true }) product!: Product;
   @Output() addToWishlist = new EventEmitter<Product>();
 
+  private fallbackImages: { [key: string]: string } = {
+    'zenbook': 'zenbook.jpg',
+    'mouse': 'mouse.webp',
+    'teclado': 'teclado.jpg',
+    'keychron': 'teclado.jpg',
+    'monitor': 'monitor.jpg',
+    'ultragear': 'monitor.jpg'
+  };
+
+  get imageUrl(): string {
+    if (this.product.image) {
+      return this.product.image;
+    }
+    const name = this.product.name.toLowerCase();
+    for (const key in this.fallbackImages) {
+      if (name.includes(key)) {
+        return this.fallbackImages[key];
+      }
+    }
+    return 'favicon.ico';
+  }
+
   onAddClick() {
     this.addToWishlist.emit(this.product);
   }
